@@ -1,10 +1,10 @@
 {
   "name": "app",
-  "version": "0.0.0",
+  "version": "1",
   "private": true,
   "author": {
-    "name": "Ricky Almeida",
-    "email": "ricky.almeida.dev@gmail.com"
+    "name": "Pedro Siqueira",
+    "email": "pedro.v.siqueira@gmail.com"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
