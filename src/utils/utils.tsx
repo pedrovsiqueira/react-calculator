@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { ReactComponent as DeleteLogo } from '../assets/icons/delete-dark.svg';
+import { DeleteIcon } from '../components/index';
 
 type Response<T> = [T, Dispatch<SetStateAction<T>>];
 
@@ -116,7 +116,7 @@ export const calculatorItems = [
   },
   {
     key: 18,
-    render: <DeleteLogo />,
+    render: <DeleteIcon />,
     value: 'R',
   },
   {

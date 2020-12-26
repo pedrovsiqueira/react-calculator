@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { Container, SubHeader, ModeContainer } from './styles';
 import { Result } from '../index';
-import Signal from '../../assets/icons/signal-dark.svg';
-import Battery from '../../assets/icons/battery-dark.svg';
-import DarkMode from '../../assets/icons/dark-mode.svg';
-import DayMode from '../../assets/icons/day-mode.svg';
+import {
+  BatteryDark,
+  BatteryLight,
+  SignalDark,
+  SignalLight,
+  DarkMode,
+  LightMode,
+} from '../../assets/icons/index';
 import { AppContext } from '../../hooks/AppContext';
 
 export const Header: React.FC = () => {
@@ -18,14 +22,20 @@ export const Header: React.FC = () => {
       <SubHeader>
         {time}
         <div>
-          <img src={Signal} alt="signal icon" />
-          <img src={Battery} alt="battery icon" />
+          <img
+            src={theme.title === 'dark' ? BatteryDark : BatteryLight}
+            alt="signal icon"
+          />
+          <img
+            src={theme.title === 'dark' ? SignalDark : SignalLight}
+            alt="battery icon"
+          />
         </div>
       </SubHeader>
 
       <ModeContainer onClick={toggleTheme}>
         <img
-          src={theme?.title === 'dark' ? DarkMode : DayMode}
+          src={theme?.title === 'dark' ? DarkMode : LightMode}
           alt="mode icon"
         />
       </ModeContainer>
