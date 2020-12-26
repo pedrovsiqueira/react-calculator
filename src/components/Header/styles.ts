@@ -4,10 +4,6 @@ export const Container = styled.div`
   height: 142px;
   border-radius: 20px;
   background-color: #374353;
-  white-space: nowrap;
-  width: 195px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 export const SubHeader = styled.div`

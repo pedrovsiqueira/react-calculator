@@ -6,6 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin: 60px 15px 0 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 195px;
 `;
 
 export const StyledInput = styled.div`
