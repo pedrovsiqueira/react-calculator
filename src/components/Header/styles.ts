@@ -19,6 +19,15 @@ export const SubHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 9px auto;
+  align-items: center;
+
+  div {
+    img {
+      &:first-child {
+        margin-right: 2px;
+      }
+    }
+  }
 `;
 
 export const ModeContainer = styled.div`
