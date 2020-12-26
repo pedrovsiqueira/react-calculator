@@ -8,7 +8,7 @@ import { calculatorItems } from '../../utils/utils';
 const Home: React.FC = props => {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
-  const elements = ['+', '-', '/', '%', '*'];
+  const elements = ['+', '-', '/', '%', '*', '.'];
   const lastElement = input.charAt(input.length - 1);
 
   useEffect(() => {
@@ -19,18 +19,42 @@ const Home: React.FC = props => {
   }, []);
 
   const handleCalculate = useCallback(() => {
-    const isLastInputAnElement = elements.includes(lastElement);
-
-    if (isLastInputAnElement) {
-      return setResult(math.evaluate(input.slice(0, -1)));
+    if (lastElement === ' ') {
+      return setResult(math.evaluate(input.slice(0, -3)));
     }
 
-    return setResult(math.evaluate(input));
-  }, [input, elements, lastElement]);
+    setResult(math.evaluate(input));
+  }, [input, lastElement]);
+
+  const handleDefaultInput = useCallback(
+    (value: string) => {
+      if (elements.includes(value)) {
+        return setInput(prevState => `${prevState} ${value} `);
+      }
+
+      setInput(prevState => prevState + value);
+    },
+    [elements],
+  );
+
+  const handleClear = () => {
+    setResult('');
+    setInput('');
+  };
+
+  const handleRemove = useCallback(() => {
+    if (lastElement === ' ') {
+      setInput(prevState => prevState.slice(0, input.length - 3));
+      return setResult('');
+    }
+
+    setInput(prevState => prevState.slice(0, -1));
+    setResult('');
+  }, [lastElement, input]);
 
   const addToInput = useCallback(
     (value: string) => {
-      if (elements.includes(lastElement) && elements.includes(value)) {
+      if (lastElement === ' ' && elements.includes(value)) {
         return null;
       }
 
@@ -39,18 +63,16 @@ const Home: React.FC = props => {
           handleCalculate();
           break;
         case 'C':
-          setResult('');
-          setInput('');
+          handleClear();
           break;
         case 'R':
-          setInput(prevState => prevState.slice(0, -1));
-          setResult('');
+          handleRemove();
           break;
         default:
-          setInput(prevState => prevState + value);
+          handleDefaultInput(value);
       }
     },
-    [handleCalculate, elements, lastElement],
+    [handleCalculate, elements, lastElement, handleDefaultInput, handleRemove],
   );
 
   return (
