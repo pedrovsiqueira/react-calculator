@@ -20,7 +20,7 @@ const Home: React.FC = props => {
 
   const handleCalculate = useCallback(() => {
     if (lastElement === ' ') {
-      return setResult(math.evaluate(input.slice(0, -3)));
+      return setResult(math.evaluate(input.slice(0, input.length - 3)));
     }
 
     setResult(math.evaluate(input));
