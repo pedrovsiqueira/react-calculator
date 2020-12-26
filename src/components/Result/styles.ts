@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 60px 15px 0 15px;
+  margin: 30px 15px 0 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -14,11 +14,11 @@ export const Container = styled.div`
 
 export const StyledInput = styled.div`
   font-size: 12px;
-  color: #b8c6ff;
+  color: ${props => props.theme.colors.inputText};
 `;
 
 export const StyledResult = styled.div`
   font-size: 24px;
   font-weight: bold;
-  color: #fff;
+  color: ${props => props.theme.colors.resultText};
 `;

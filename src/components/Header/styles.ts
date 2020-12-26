@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 142px;
   border-radius: 20px;
-  background-color: #374353;
+  background-color: ${props => props.theme.colors.calculatorBackground};
 `;
 
 export const SubHeader = styled.div`
@@ -13,10 +13,20 @@ export const SubHeader = styled.div`
   font-size: 6.5px;
   font-weight: bold;
 
-  color: #fff;
-  background-color: #374353;
+  color: ${props => props.theme.colors.text};
+  background-color: ${props => props.theme.colors.calculatorBackground};
 
   display: flex;
   justify-content: space-between;
   margin: 9px auto;
+`;
+
+export const ModeContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;

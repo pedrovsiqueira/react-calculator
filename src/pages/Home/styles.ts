@@ -5,13 +5,14 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: ${props => props.theme.colors.background};
 `;
 
 export const StyledBackground = styled.div`
   width: 199px;
   height: 398px;
   border-radius: 20px;
-  background-color: #374353;
+  background-color: ${props => props.theme.colors.calculatorBackground};
 
   display: flex;
   flex-direction: column;

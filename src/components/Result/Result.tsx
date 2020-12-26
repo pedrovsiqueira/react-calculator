@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../hooks/AppContext';
 import { Container, StyledResult, StyledInput } from './styles';
-import { HeaderProps } from '../../interfaces/interfaces';
 
-export const Result: React.FC<HeaderProps> = ({ result, input }) => (
-  <Container>
-    <StyledInput>{input}</StyledInput>
-    <StyledResult>{result}</StyledResult>
-  </Container>
-);
+export const Result: React.FC = () => {
+  const { input, result } = useContext(AppContext);
+
+  return (
+    <Container>
+      <StyledInput>{input}</StyledInput>
+      <StyledResult>{result}</StyledResult>
+    </Container>
+  );
+};

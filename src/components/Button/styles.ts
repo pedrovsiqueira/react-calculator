@@ -4,12 +4,13 @@ export const StyledButton = styled.button`
   width: 32px;
   height: 32px;
 
-  background: #374353;
-  box-shadow: -5px -5px 10px #394656, 5px 5px 10px #313d4e;
+  background: ${props => props.theme.colors.calculatorBackground};
+  box-shadow: -5px -5px 10px ${props => props.theme.colors.buttonBoxShadowPrimary},
+    5px 5px 10px ${props => props.theme.colors.buttonBoxShadowSecondary};
   border-radius: 10px;
 
   font-size: 12px;
-  color: #fff;
+  color: ${props => props.theme.colors.text};
 
   display: flex;
   justify-content: center;
