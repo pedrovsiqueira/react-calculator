@@ -5,7 +5,7 @@ import { Header, Button } from '../../components';
 import { Container, StyledBackground, ButtonsContainer } from './styles';
 import { calculatorItems } from '../../utils/utils';
 
-const Home: React.FC = props => {
+const Home: React.FC = () => {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
   const elements = ['+', '-', '/', '%', '*', '.'];
@@ -79,7 +79,7 @@ const Home: React.FC = props => {
     <>
       <Helmet title="Home" />
       <Container>
-        <StyledBackground {...props}>
+        <StyledBackground>
           <Header result={result} input={input} />
 
           <ButtonsContainer>
