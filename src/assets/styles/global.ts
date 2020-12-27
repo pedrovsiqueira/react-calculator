@@ -39,4 +39,8 @@ export default createGlobalStyle`
     border: none;
     outline: none;
   }
+
+  ::selection {
+    background-color: transparent;
+  }
 `;
