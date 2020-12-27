@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+interface StyledProps {
+  isElement?: boolean;
+}
+
+export const StyledButton = styled.button<StyledProps>`
   width: 32px;
   height: 32px;
 
@@ -10,7 +14,8 @@ export const StyledButton = styled.button`
   border-radius: 10px;
 
   font-size: 12px;
-  color: ${props => props.theme.colors.text};
+  color: ${props =>
+    props.isElement ? props.theme.colors.operator : props.theme.colors.text};
 
   display: flex;
   justify-content: center;

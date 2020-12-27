@@ -1,8 +1,17 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { StyledButton } from './styles';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  value: string;
+}
 
-export const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
-  <StyledButton {...rest}>{children}</StyledButton>
-);
+export const Button: React.FC<ButtonProps> = ({ children, value, ...rest }) => {
+  const operatorButtons = ['+', '-', '/', '%', '*', '=', 'PM'];
+  const isElement = operatorButtons.includes(value);
+
+  return (
+    <StyledButton isElement={isElement} {...rest}>
+      {children}
+    </StyledButton>
+  );
+};
