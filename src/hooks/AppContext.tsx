@@ -19,15 +19,13 @@ const AppContextProvider: React.FC = ({ children }) => {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
-  const elements = ['+', '-', '/', '%', '*'];
+  const operators = ['+', '-', '/', '%', '*'];
+  const secondaryOperators = ['C', 'R', '=', 'PM'];
   const lastElement = input.charAt(input.length - 1);
 
-  const isElement = useCallback(
-    (value: string) => {
-      return elements.includes(value);
-    },
-    [elements],
-  );
+  const isElement = useCallback((value: string, arrayToCheck: string[]) => {
+    return arrayToCheck.includes(value);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
@@ -49,13 +47,13 @@ const AppContextProvider: React.FC = ({ children }) => {
 
   const handleDefaultInput = useCallback(
     (value: string) => {
-      if (isElement(value)) {
+      if (isElement(value, operators)) {
         return setInput(prevState => `${prevState} ${value} `);
       }
 
       setInput(prevState => prevState + value);
     },
-    [isElement],
+    [isElement, operators],
   );
 
   const handleClear = useCallback(() => {
@@ -86,10 +84,11 @@ const AppContextProvider: React.FC = ({ children }) => {
   const addToInput = useCallback(
     (value: string) => {
       if (
-        (lastElement === ' ' && isElement(value)) ||
-        (lastElement === '.' && isElement(value)) ||
+        (lastElement === ' ' && isElement(value, operators)) ||
+        (lastElement === '.' && isElement(value, operators)) ||
         (lastElement === '.' && value === '.') ||
-        (!input.length && isElement(value))
+        (!input.length && isElement(value, operators)) ||
+        (input.length > 20 && !isElement(value, secondaryOperators))
       ) {
         return null;
       }
@@ -120,6 +119,8 @@ const AppContextProvider: React.FC = ({ children }) => {
       input,
       isElement,
       handlePlusMinus,
+      operators,
+      secondaryOperators,
     ],
   );
 
