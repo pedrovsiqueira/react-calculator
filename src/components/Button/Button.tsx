@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, value, ...rest }) => {
-  const operatorButtons = ['+', '-', '/', '%', '*', '=', 'PM'];
+  const operatorButtons = ['+', '-', '/', '%', '*', '=', 'PM', 'C'];
   const isElement = operatorButtons.includes(value);
 
   return (
