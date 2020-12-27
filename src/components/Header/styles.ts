@@ -4,13 +4,13 @@ export const Container = styled.div`
   height: 142px;
   border-radius: 20px;
   background-color: ${props => props.theme.colors.calculatorBackground};
+  max-width: 98%;
 `;
 
 export const SubHeader = styled.div`
-  width: 173px;
-  height: 7.85px;
+  height: 10px;
 
-  font-size: 6.5px;
+  font-size: 15px;
   font-weight: bold;
 
   color: ${props => props.theme.colors.text};
@@ -18,13 +18,17 @@ export const SubHeader = styled.div`
 
   display: flex;
   justify-content: space-between;
-  margin: 9px auto;
+  margin: 10px 0 0 10px;
   align-items: center;
+
+  img {
+    height: 15px;
+  }
 
   div {
     img {
       &:first-child {
-        margin-right: 2px;
+        margin-right: 10px;
       }
     }
   }
@@ -33,7 +37,11 @@ export const SubHeader = styled.div`
 export const ModeContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-right: 15px;
+  margin-top: 10px;
+
+  img {
+    height: 50px;
+  }
 
   :hover {
     cursor: pointer;

@@ -5,20 +5,28 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 30px 15px 0 15px;
+  margin: 15px 15px 0 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 195px;
+  max-width: 98%;
 `;
 
 export const StyledInput = styled.div`
-  font-size: 12px;
+  font-size: 20px;
   color: ${props => props.theme.colors.inputText};
+
+  @media (min-width: 375px) {
+    font-size: 25px;
+  }
 `;
 
 export const StyledResult = styled.div`
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
   color: ${props => props.theme.colors.resultText};
+
+  @media (min-width: 375px) {
+    font-size: 50px;
+  }
 `;

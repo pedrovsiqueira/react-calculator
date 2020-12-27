@@ -33,8 +33,9 @@ export const Header: React.FC = () => {
         </div>
       </SubHeader>
 
-      <ModeContainer onClick={toggleTheme}>
+      <ModeContainer>
         <img
+          onClick={toggleTheme}
           src={theme?.title === 'dark' ? DarkMode : LightMode}
           alt="mode icon"
         />

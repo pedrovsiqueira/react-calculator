@@ -9,22 +9,33 @@ export const Container = styled.div`
 `;
 
 export const StyledBackground = styled.div`
-  width: 199px;
-  height: 398px;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+
   background-color: ${props => props.theme.colors.calculatorBackground};
 
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 480px) {
+    border-radius: 20px;
+    max-width: 430px;
+    max-height: 700px;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-left: 14px;
+  margin-top: 40px;
 
-  button {
-    margin: 14px 14px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  justify-items: center;
+  align-items: end;
+
+  max-height: 400px;
+
+  @media (min-width: 375px) {
+    margin: auto 0;
   }
 `;
