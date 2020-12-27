@@ -1,6 +1,6 @@
 # React Calculator
 
-<!-- ![Calculator ](/public/????) -->
+![Calculator ](/public/calculator.png)
 
 ## About The Project
 
