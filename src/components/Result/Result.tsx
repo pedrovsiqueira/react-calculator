@@ -8,7 +8,7 @@ export const Result: React.FC = () => {
   return (
     <Container>
       <StyledInput>{input}</StyledInput>
-      <StyledResult>{result}</StyledResult>
+      <StyledResult>{result.slice(0, 12)}</StyledResult>
     </Container>
   );
 };
