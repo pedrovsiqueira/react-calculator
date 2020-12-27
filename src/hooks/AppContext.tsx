@@ -40,7 +40,7 @@ const AppContextProvider: React.FC = ({ children }) => {
       );
     }
 
-    if (lastElement === '.') {
+    if (lastElement === '.' || !input.length) {
       return null;
     }
 
