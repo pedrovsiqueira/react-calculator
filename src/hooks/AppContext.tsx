@@ -22,27 +22,40 @@ const AppContextProvider: React.FC = ({ children }) => {
   const elements = ['+', '-', '/', '%', '*'];
   const lastElement = input.charAt(input.length - 1);
 
+  const isElement = useCallback(
+    (value: string) => {
+      return elements.includes(value);
+    },
+    [elements],
+  );
+
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
   };
 
   const handleCalculate = useCallback(() => {
     if (lastElement === ' ') {
-      return setResult(math.evaluate(input.slice(0, input.length - 3)));
+      return setResult(
+        math.evaluate(input.slice(0, input.length - 3)).toString(),
+      );
     }
 
-    setResult(math.evaluate(input.replace(/\s+/g, '')));
+    if (lastElement === '.') {
+      return null;
+    }
+
+    setResult(math.evaluate(input.replace(/\s+/g, '')).toString());
   }, [input, lastElement]);
 
   const handleDefaultInput = useCallback(
     (value: string) => {
-      if (elements.includes(value)) {
+      if (isElement(value)) {
         return setInput(prevState => `${prevState} ${value} `);
       }
 
       setInput(prevState => prevState + value);
     },
-    [elements],
+    [isElement],
   );
 
   const handleClear = useCallback(() => {
@@ -60,13 +73,23 @@ const AppContextProvider: React.FC = ({ children }) => {
     setResult('');
   }, [lastElement, input]);
 
+  const handlePlusMinus = useCallback(() => {
+    if (!result) {
+      return null;
+    }
+
+    setResult(prevState =>
+      !result.includes('-') ? `-${prevState}` : prevState.replace('-', ''),
+    );
+  }, [result]);
+
   const addToInput = useCallback(
     (value: string) => {
       if (
-        (lastElement === ' ' && elements.includes(value)) ||
-        (lastElement === '.' && elements.includes(value)) ||
+        (lastElement === ' ' && isElement(value)) ||
+        (lastElement === '.' && isElement(value)) ||
         (lastElement === '.' && value === '.') ||
-        (!input.length && elements.includes(value))
+        (!input.length && isElement(value))
       ) {
         return null;
       }
@@ -81,18 +104,22 @@ const AppContextProvider: React.FC = ({ children }) => {
         case 'R':
           handleRemove();
           break;
+        case 'PM':
+          handlePlusMinus();
+          break;
         default:
           handleDefaultInput(value);
       }
     },
     [
-      elements,
       handleCalculate,
       handleClear,
       handleDefaultInput,
       handleRemove,
       lastElement,
       input,
+      isElement,
+      handlePlusMinus,
     ],
   );
 
