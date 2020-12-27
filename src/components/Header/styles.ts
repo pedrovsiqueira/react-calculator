@@ -41,9 +41,9 @@ export const ModeContainer = styled.div`
 
   img {
     height: 50px;
-  }
 
-  :hover {
-    cursor: pointer;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
