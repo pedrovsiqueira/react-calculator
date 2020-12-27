@@ -17,7 +17,11 @@ const Home: React.FC = () => {
 
           <ButtonsContainer>
             {calculatorItems.map(item => (
-              <Button key={item.key} onClick={() => addToInput(item.value)}>
+              <Button
+                key={item.key}
+                value={item.value}
+                onClick={() => addToInput(item.value)}
+              >
                 {item.render}
               </Button>
             ))}
