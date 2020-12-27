@@ -9,7 +9,11 @@ export default createGlobalStyle`
 
   html {
     font-size: 16px;
-    font-family: 'Lato'
+    font-family: 'Lato';
+
+    @media (max-width: 500px) {
+      background-color: ${props => props.theme.colors.calculatorBackground}
+    }
   }
 
   html, body, #root {

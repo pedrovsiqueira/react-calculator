@@ -32,6 +32,10 @@ export const SubHeader = styled.div`
       }
     }
   }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const ModeContainer = styled.div`
