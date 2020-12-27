@@ -32,7 +32,7 @@ export const calculatorItems = [
   {
     key: 1,
     render: '+/-',
-    value: '+/-',
+    value: 'PM',
   },
   {
     key: 2,
